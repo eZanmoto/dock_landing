@@ -1,0 +1,15 @@
+schema_version: '0.1'
+organisation: ezanmoto
+project: dock_landing
+default_shell_env: build
+
+environments:
+  build:
+    workdir: /app
+
+    mount_local:
+    - user
+    - group
+    - project_dir
+
+    shell: /bin/bash

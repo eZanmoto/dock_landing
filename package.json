@@ -1,0 +1,12 @@
+{
+  "name": "dock_landing",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "less": "4.1.3",
+    "vite": "3.0.2"
+  }
+}
