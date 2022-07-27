@@ -10,3 +10,47 @@
   background-image: linear-gradient(#ffffff00 50%, #ffffffe0);
   width: 100%;
 }
+
+.code-editor {
+  position: relative;
+  background-color: #000000d0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4.0rem 5.0rem 1.0rem #00000080;
+  padding: 1.0rem;
+
+  .control-bar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+
+    .control-button {
+      display: inline-block;
+      height: 0.8rem;
+      width: 0.8rem;
+      border: 1px solid white;
+      border-radius: 0.8rem;
+      margin: 0.25rem;
+    }
+
+    .control-button.red {
+      background-color: #ff5f56;
+      border-color: #e0443e;
+    }
+
+    .control-button.yellow {
+      background-color: #ffbd2e;
+      border-color: #dea123;
+    }
+
+    .control-button.green {
+      background-color: #27c93f;
+      border-color: #1aab29;
+    }
+  }
+
+  pre {
+      text-align: left;
+      margin: 0;
+      color: #fffffff0;
+  }
+}
