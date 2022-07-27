@@ -19,9 +19,7 @@ environment by running `dock shell`.
 ### Running
 
 The project can be run locally using `npm run dev`, or can be run using Dock by
-running `npx vite --host` under `dock shell`, or by running the following:
-
-    dock run-in build-env: npx vite --host
+running `npx vite --host` under `dock shell`.
 
 ### Building
 
