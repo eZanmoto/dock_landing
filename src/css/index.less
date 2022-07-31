@@ -34,6 +34,7 @@ header {
   outline: var(--primary-colour) 0.5rem solid;
   padding: 1.5rem 5.0rem;
   margin: 0 0.5rem;
+  z-index: 1;
 
   @media @phone {
     /* We remove an extra 10.0rem compared to above to account for the 10.0rem
@@ -46,6 +47,11 @@ header {
   h1 {
     display: flex;
     height: 100%;
+  }
+
+  a img {
+    height: 90%;
+    margin: 5.0% 1.0rem;
   }
 }
 
