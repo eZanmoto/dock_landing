@@ -14,6 +14,41 @@ p {
   margin: 0;
 }
 
+header {
+  display: flex;
+  position: absolute;
+  height: 5.0rem;
+  /* We remove 10.0rem for the `padding` on either side and 0.5rem for the
+   * `outline` on either side.
+   */
+  width: calc(100% - 12.0rem);
+  top: 0;
+  background-color: var(--primary-colour);
+  border: white 0.5rem solid;
+  border-bottom-left-radius: 5.0rem;
+  border-bottom-right-radius: 5.0rem;
+  border-top: 0;
+  box-shadow: 0 2.0rem 5.0rem 0.0rem #00000080;
+  justify-content: center;
+  min-width: 8.0rem;
+  outline: var(--primary-colour) 0.5rem solid;
+  padding: 1.5rem 5.0rem;
+  margin: 0 0.5rem;
+
+  @media @phone {
+    /* We remove an extra 10.0rem compared to above to account for the 10.0rem
+     * of `margin` on either side.
+     */
+    width: calc(100% - 21.0rem);
+    margin: 0 5.0rem;
+  }
+
+  h1 {
+    display: flex;
+    height: 100%;
+  }
+}
+
 .hero {
   display: flex;
   height: 100vh;
@@ -100,41 +135,6 @@ p {
   bottom: -2.0rem;
   right: -2.0rem;
   height: 8.0rem;
-}
-
-header {
-  display: flex;
-  position: absolute;
-  height: 5.0rem;
-  /* We remove 10.0rem for the `padding` on either side and 0.5rem for the
-   * `outline` on either side.
-   */
-  width: calc(100% - 12.0rem);
-  top: 0;
-  background-color: var(--primary-colour);
-  border: white 0.5rem solid;
-  border-bottom-left-radius: 5.0rem;
-  border-bottom-right-radius: 5.0rem;
-  border-top: 0;
-  box-shadow: 0 2.0rem 5.0rem 0.0rem #00000080;
-  justify-content: center;
-  min-width: 8.0rem;
-  outline: var(--primary-colour) 0.5rem solid;
-  padding: 1.5rem 5.0rem;
-  margin: 0 0.5rem;
-
-  @media @phone {
-    /* We remove an extra 10.0rem compared to above to account for the 10.0rem
-     * of `margin` on either side.
-     */
-    width: calc(100% - 21.0rem);
-    margin: 0 5.0rem;
-  }
-
-  h1 {
-    display: flex;
-    height: 100%;
-  }
 }
 
 footer {
