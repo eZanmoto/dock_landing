@@ -72,26 +72,28 @@
     </section>
 
     <section>
-      <h2>When to use Dock</h2>
+      <div class="container">
+        <h2>When to use Dock</h2>
 
-      <div>
-        <p>
-          Dock is primarily intended to be used as part of your local
-          development process. It should ideally be used in your team's
-          centralised build pipeline too, to build artefacts and images for
-          production use.
-        </p>
+        <div>
+          <p>
+            Dock is primarily intended to be used as part of your local
+            development process. It should ideally be used in your team's
+            centralised build pipeline too, to build artefacts and images for
+            production use.
+          </p>
 
-        <p>
-          Note that Dock commands shouldn't be used to directly run production
-          services (by using <code>dock run-in prod-env: serve</code>, for
-          example). This is because the features that Dock provides are primarily
-          for speeding up development, particularly through the use of bind
-          mounts (volumes are generally more appropriate for production
-          scenarios). Instead, a dedicated container orchestrator like Docker
-          Compose should be used instead of Dock for running production
-          workloads.
-        </p>
+          <p>
+            Note that Dock commands shouldn't be used to directly run production
+            services (by using <code>dock run-in prod-env: serve</code>, for
+            example). This is because the features that Dock provides are primarily
+            for speeding up development, particularly through the use of bind
+            mounts (volumes are generally more appropriate for production
+            scenarios). Instead, a dedicated container orchestrator like Docker
+            Compose should be used instead of Dock for running production
+            workloads.
+          </p>
+        </div>
       </div>
     </section>
 
