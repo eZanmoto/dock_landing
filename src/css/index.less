@@ -140,6 +140,10 @@ header {
   }
 }
 
+.code-editor {
+  z-index: 1;
+}
+
 .logo-tag {
   position: absolute;
   bottom: -2.0rem;
@@ -148,8 +152,26 @@ header {
 }
 
 section + section {
+  position: relative;
   background-color: white;
-  padding: 2.0rem;
+  padding-top: 4.0rem;
+  padding-bottom: 11.0rem;
+}
+
+section + section::after {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 7.0rem;
+  background-image: url("/src/img/waves_inverted_white.png");
+  background-size: 4.0rem;
+  content: "";
+}
+
+li {
+  margin-bottom: 4.0rem;
 }
 
 footer {
