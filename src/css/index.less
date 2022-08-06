@@ -1,4 +1,5 @@
 @phone: ~"(min-width: 400px)";
+@phablet: ~"(min-width: 550px)";
 
 :root {
   --primary-colour: #00c6c9;
@@ -146,9 +147,17 @@ header {
 
 .logo-tag {
   position: absolute;
-  bottom: -2.0rem;
-  right: -2.0rem;
+  bottom: -5.0rem;
+  right: 0;
   height: 8.0rem;
+
+  @media @phone {
+    right: -2.0rem;
+  }
+
+  @media @phablet {
+    bottom: -2.0rem;
+  }
 }
 
 section + section {
