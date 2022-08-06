@@ -230,12 +230,12 @@ li {
     border-radius: 5.0rem;
     margin-bottom: 2.0rem;
     margin-top: 2.0rem;
-    padding: 5.0rem;
+    padding: 5.0rem 2.0rem;
   }
 
   .code-editor {
     margin-top: 2.0rem;
-    width: 110%;
+    width: calc(100% - 2.0rem);
   }
 
   .instructions {
@@ -245,33 +245,35 @@ li {
   li + li + li .code-editor {
     margin-bottom: 0;
   }
-}
 
-@media @phone {
-  .getting-started {
+  @media @phone {
     h2 img {
       width: auto;
       height: 5.0rem;
     }
-  }
-}
 
-@media @phablet {
-  .getting-started {
+    .code-editor {
+      margin-top: 2.0rem;
+      width: 105%;
+    }
+  }
+
+  @media @phablet {
     h2 img {
       height: 7.0rem;
     }
-  }
-}
 
-@media @desktop {
-  .getting-started {
+    .code-editor {
+      margin-top: 2.0rem;
+      width: 110%;
+    }
+  }
+
+  @media @desktop {
     background-color: white;
 
     .container {
       position: relative;
-      background-color: #9de3e4;
-      border-radius: 5.0rem;
       margin-bottom: 8.0rem;
       margin-top: 8.0rem;
       padding: 5.0rem;
