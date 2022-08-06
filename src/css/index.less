@@ -221,7 +221,8 @@ li {
   background-color: white;
 
   h2 img {
-    height: 7.0rem;
+    width: 80%;
+    min-width: 20.0rem;
   }
 
   .container {
@@ -243,6 +244,23 @@ li {
 
   li + li + li .code-editor {
     margin-bottom: 0;
+  }
+}
+
+@media @phone {
+  .getting-started {
+    h2 img {
+      width: auto;
+      height: 5.0rem;
+    }
+  }
+}
+
+@media @phablet {
+  .getting-started {
+    h2 img {
+      height: 7.0rem;
+    }
   }
 }
 
