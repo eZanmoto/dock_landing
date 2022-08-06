@@ -79,12 +79,10 @@
           <li>
             <div>
               <h3><code>dock init</code></h3>
-
               <p>
                 Adds <code>dock.yaml</code> and <code>build.Dockerfile</code>
               </p>
             </div>
-
             <div class="code-editor">
               <div class="control-bar">
                 <span class="control-button red"></span>
@@ -102,17 +100,15 @@
 
               </pre>
             </div>
-
           </li>
+
           <li>
             <div>
               <h3><code>dock shell -D</code></h3>
-
               <p>
                 Work from within your build enviroment
               </p>
             </div>
-
             <div class="code-editor">
               <div class="control-bar">
                 <span class="control-button red"></span>
@@ -131,15 +127,14 @@
     [&gt;] build.Dockerfile Cargo.toml dock.yaml src</pre>
             </div>
           </li>
+
           <li>
             <div>
               <h3><code>dock</code></h3>
-
               <p>
                 Don't output debugging information
               </p>
             </div>
-
             <div class="code-editor">
               <div class="control-bar">
                 <span class="control-button red"></span>
@@ -162,29 +157,120 @@
       </div>
     </section>
 
-    <section>
+    <section class="features">
       <div class="container">
-        <h2>Installation</h2>
+        <h2>Features</h2>
 
         <ul>
+          <li>
+            <h3>Rebuild</h3>
 
-          <li>Binaries</li>
-              <div>
-                <h3><code>dock init</code></h3>
+            <p>
+              <code>dock</code> always rebuilds images before running commands
+              in them. This keeps you in sync with your team and your current
+              branch automatically.
+            </p>
+          </li>
+          <li>
+            <h3>Mount local</h3>
 
-                <p>
-                  Adds <code>dock.yaml</code> and <code>build.Dockerfile</code>
-                </p>
-              </div>
-          <li>With Rust</li>
-          <li>Without Rust</li>
+            <p>
+              You can easily mount your local user, group and project directory
+              to make it feel like you're building locally, which avoids the
+              pitfalls of running as <code>root</code> in your build containers.
+            </p>
+          </li>
+          <li>
+            <h3>Cache volumes</h3>
+
+            <p>
+              Dock's special cache volumes help you share reusable caches
+              between your build environments, while also making them usable by
+              non-<code>root</code> users.
+            </p>
+          </li>
+          <li>
+            <h3>Debug</h3>
+
+            <p>
+              Dock is a relatively thin wrapper around the Docker CLI. Use
+              <code>-D</code> with most subcommands to see what
+              <code>dock</code> is running under the hood.
+            </p>
+          </li>
+          <li>
+            <h3>Host network in <code>shell</code></h3>
+
+            <p>
+              Services you run while you're in <code>dock shell</code> are
+              automatically available on <code>localhost</code>.
+            </p>
+          </li>
         </ul>
       </div>
     </section>
 
-    <section>
+    <section class="benefits">
       <div class="container">
-        <h2>When to use Dock</h2>
+        <h2>Benefits</h2>
+
+        <ul>
+          <li>
+            <h3>Local/CI parity</h3>
+
+            <p>
+              Running commands in the same containerised environments locally
+              and in the build pipeline minimises differences, and can
+              dramatically help with debugging both.
+            </p>
+          </li>
+          <li>
+            <h3>Team parity</h3>
+
+            <p>
+              As with the build pipeline, having team members on the exact same
+              versions of system dependencies helps to avoid using features that
+              not all members have, like an OS-level lock file.
+            </p>
+          </li>
+          <li>
+            <h3>Onboarding</h3>
+
+            <p>
+              Onboarding onto a new project can be as simple as running
+              <code>dock</code>, because you now have a shell with access to all
+              the system dependencies of the project.
+            </p>
+          </li>
+          <li>
+            <h3>Avoid accidental dependencies</h3>
+
+            <p>
+              Running a different version of your OS to your CI can make it easy
+              to depend on local functionality that doesn't exist remotely, but
+              developing in containers can help to avoid this.
+            </p>
+          </li>
+          <li>
+            <h3>Executable environment definition</h3>
+
+            <p>
+              Developers that still want to install dependencies locally can
+              follow the steps laid out in the <code>build.Dockerfile</code>,
+              rather than <a
+              href="https://benzaita.github.io/dockerized-cli/explanations/why_use_dockerized/#what-ive-seen-people-usually-do-and-have-done-by-myself">steps
+              defined manually in the README</a>.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="best-practices">
+      <div class="container">
+        <h2>Best Practices</h2>
+
+        <h3>When to use Dock</h3>
 
         <div>
           <p>
@@ -203,6 +289,32 @@
             scenarios). Instead, a dedicated container orchestrator like Docker
             Compose should be used instead of Dock for running production
             workloads.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="alternatives">
+      <div class="container">
+        <h2>Alternatives</h2>
+
+        <div>
+          <h3>
+            <a href="https://github.com/benzaita/dockerized-cli/">
+              dockerized
+            </a>
+          </h3>
+
+          <p class="quote">
+            dockerized is a tool for seamlessly executing commands in a
+            container.
+          </p>
+
+          <p>
+            Where Dock is a thin wrapper around the Docker CLI, <a
+            href="https://benzaita.github.io/dockerized-cli/explanations/how_dockerized_exec_works/">dockerized
+            is a thin wrapper around Docker Compose</a>, which is used to
+            achieve similar functionality.
           </p>
         </div>
       </div>
