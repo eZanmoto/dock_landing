@@ -151,6 +151,42 @@
       </div>
     </section>
 
+    <section class="installation">
+      <div class="container">
+        <h2>Installation</h2>
+        <ul>
+
+          <li>
+            <h3>With Rust</h3>
+            <p>
+              The <a href="https://github.com/ezanmoto/dock">source code</a>
+              for the project can be downloaded and built directly. Note that
+              this requires setting the
+              <code>DOCK_DEFAULT_TEMPLATES_SOURCE</code> environment variable.
+            </p>
+            <div class="code-editor">
+              <div class="control-bar">
+                <span class="control-button red"></span>
+                <span class="control-button yellow"></span>
+                <span class="control-button green"></span>
+              </div>
+              <pre>
+<span class="prompt"><span class="dollar">$</span></span> git clone https://github.com/ezanmoto/dock
+    Cloning into 'dock'...
+<span class="prompt"><span class="dollar">$</span></span> cd dock
+<span class="prompt">dock<span class="dollar">$</span></span> export DOCK_DEFAULT_TEMPLATES_SOURCE='git:https://github.com/ezanmoto/dock_init_templates.git:0.1:./templates'
+<span class="prompt">dock<span class="dollar">$</span></span> cargo build --release
+    ...
+        Finished release [optimized] target(s)
+<span class="prompt">dock<span class="dollar">$</span></span> target/release/dock --version
+    dock 0.35.5</pre>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
     <section class="features">
       <div class="container">
         <h2>Features</h2>
