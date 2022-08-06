@@ -159,9 +159,8 @@
           <li>
             <h3>With Rust</h3>
             <p>
-              The <a href="https://github.com/ezanmoto/dock">source code</a>
-              for the project can be downloaded and built directly. Note that
-              this requires setting the
+              <code>cargo</code> can be used to build and install the latest
+              version of the project. Note that this requires setting the
               <code>DOCK_DEFAULT_TEMPLATES_SOURCE</code> environment variable.
             </p>
             <div class="code-editor">
@@ -171,14 +170,14 @@
                 <span class="control-button green"></span>
               </div>
               <pre>
-<span class="prompt"><span class="dollar">$</span></span> git clone https://github.com/ezanmoto/dock
-    Cloning into 'dock'...
-<span class="prompt"><span class="dollar">$</span></span> cd dock
-<span class="prompt">dock<span class="dollar">$</span></span> export DOCK_DEFAULT_TEMPLATES_SOURCE='git:https://github.com/ezanmoto/dock_init_templates.git:0.1:./templates'
-<span class="prompt">dock<span class="dollar">$</span></span> cargo build --release
+<span class="prompt"><span class="dollar">$</span></span> export DOCK_DEFAULT_TEMPLATES_SOURCE='git:https://github.com/ezanmoto/dock_init_templates.git:0.1:./templates'
+<span class="prompt"><span class="dollar">$</span></span> cargo install --git https://github.com/ezanmoto/dock
     ...
+       Compiling dock v0.35.5
         Finished release [optimized] target(s)
-<span class="prompt">dock<span class="dollar">$</span></span> target/release/dock --version
+      Installing /cargo/bin/dock
+       Installed package `dock v0.35.5
+<span class="prompt"><span class="dollar">$</span></span> /cargo/bin/dock --version
     dock 0.35.5</pre>
             </div>
           </li>
