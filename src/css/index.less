@@ -123,15 +123,9 @@ section + section .code-editor {
   margin-bottom: 5.0rem;
 }
 
-ol {
-  li::marker {
-    font-size: 2.0rem;
-  }
-
-  h3 {
-    display: inline;
-    margin-left: 0;
-  }
+ol h3 {
+  display: inline;
+  margin-left: 0;
 }
 
 li {
@@ -217,10 +211,6 @@ li {
 
     li {
       cursor: pointer;
-    }
-
-    li::after {
-      display: none;
     }
 
     .instructions {
