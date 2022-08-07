@@ -257,47 +257,46 @@
     <section class="benefits">
       <div class="container">
         <h2>Benefits</h2>
-
         <ul>
+
           <li>
             <h3>Local/CI parity</h3>
-
             <p>
               Running commands in the same containerised environments locally
               and in the build pipeline minimises differences, and can
               dramatically help with debugging both.
             </p>
           </li>
+
           <li>
             <h3>Team parity</h3>
-
             <p>
               As with the build pipeline, having team members on the exact same
               versions of system dependencies helps to avoid using features that
               not all members have, like an OS-level lock file.
             </p>
           </li>
+
           <li>
             <h3>Onboarding</h3>
-
             <p>
               Onboarding onto a new project can be as simple as running
               <code>dock</code>, because you now have a shell with access to all
               the system dependencies of the project.
             </p>
           </li>
+
           <li>
             <h3>Avoid accidental dependencies</h3>
-
             <p>
               Running a different version of your OS to your CI can make it easy
               to depend on local functionality that doesn't exist remotely, but
               developing in containers can help to avoid this.
             </p>
           </li>
+
           <li>
             <h3>Executable environment definition</h3>
-
             <p>
               Developers that still want to install dependencies locally can
               follow the steps laid out in the <code>build.Dockerfile</code>,
@@ -306,6 +305,16 @@
               defined manually in the README</a>.
             </p>
           </li>
+
+          <li>
+            <h3>Versioned build environment</h3>
+            <p>
+              Having your environment definition committed as code means that
+              you can version your build environment in the same way as other
+              dependencies, keeping your team and CI in sync automatically.
+            </p>
+          </li>
+
         </ul>
       </div>
     </section>
