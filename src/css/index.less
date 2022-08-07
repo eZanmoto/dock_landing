@@ -1,4 +1,9 @@
 @import "site";
+@import "code_editor";
+
+.dock-prompt {
+  --dock-prompt-colour: #48b685;
+}
 
 body {
   background-image: url("/src/img/waves.png");
@@ -62,73 +67,11 @@ header {
 }
 
 .code-editor {
-  position: relative;
-  width: 100%;
-  background-color: #000000e0;
-  border-radius: 0.5rem;
-  box-shadow: 0 4.0rem 5.0rem 1.0rem #00000080;
-  font-size: 1.3rem;
-  padding: 1.0rem;
-
-  .control-bar {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 1.5rem;
-
-    .control-button {
-      display: inline-block;
-      height: 1.0rem;
-      width: 1.0rem;
-      border: 1px solid white;
-      border-radius: 1.0rem;
-      margin: 0.4rem;
-    }
-
-    .control-button.red {
-      background-color: #ff5f56;
-      border-color: #e0443e;
-    }
-
-    .control-button.yellow {
-      background-color: #ffbd2e;
-      border-color: #dea123;
-    }
-
-    .control-button.green {
-      background-color: #27c93f;
-      border-color: #1aab29;
-    }
-  }
-
-  pre {
-    text-align: left;
-    color: #fffffff0;
-    margin: 0 1.0rem;
-  }
-
-  .prompt {
-    color: #ffffffa0;
-  }
-
-  .failure {
-    color: #fc1f2c;
-  }
-
-  .at, .dollar {
-    opacity: 0.5;
-  }
+  z-index: 1;
 
   .dock-prompt {
-    color: #48b685;
+    color: var(--dock-prompt-colour);
   }
-
-  @media @tablet {
-    font-size: 1.5rem;
-  }
-}
-
-.code-editor {
-  z-index: 1;
 }
 
 .logo-tag {
