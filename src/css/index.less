@@ -1,5 +1,7 @@
 @phone: ~"(min-width: 400px)";
 @phablet: ~"(min-width: 550px)";
+@tablet: ~"(min-width: 750px)";
+@desktop: ~"(min-width: 1000px)";
 
 :root {
   --primary-colour: #00c6c9;
@@ -141,7 +143,7 @@ header {
     color: #48b685;
   }
 
-  @media @phone {
+  @media @tablet {
     font-size: 1.5rem;
   }
 }
@@ -210,19 +212,133 @@ ol {
   }
 }
 
-ul li {
+li {
   list-style-type: none;
+  margin-top: 3.0rem;
 }
 
-li {
-  margin-top: 3.0rem;
+.getting-started {
+  background-color: white;
+
+  h2 img {
+    width: 80%;
+    min-width: 20.0rem;
+  }
+
+  .container {
+    background-color: #9de3e4;
+    border-radius: 5.0rem;
+    margin-bottom: 2.0rem;
+    margin-top: 2.0rem;
+    padding: 5.0rem 2.0rem;
+  }
+
+  .code-editor {
+    margin-top: 2.0rem;
+    width: calc(100% - 2.0rem);
+  }
+
+  .instructions {
+    z-index: 2;
+  }
+
+  li + li + li .code-editor {
+    margin-bottom: 0;
+  }
+
+  @media @phone {
+    h2 img {
+      width: auto;
+      height: 5.0rem;
+    }
+
+    .code-editor {
+      margin-top: 2.0rem;
+      width: 105%;
+    }
+  }
+
+  @media @phablet {
+    h2 img {
+      height: 7.0rem;
+    }
+
+    .code-editor {
+      margin-top: 2.0rem;
+      width: 110%;
+    }
+  }
+
+  @media @desktop {
+    background-color: white;
+
+    .container {
+      position: relative;
+      margin-bottom: 8.0rem;
+      margin-top: 8.0rem;
+      padding: 5.0rem;
+    }
+
+    .code-editor {
+      position: absolute;
+      width: 40%;
+      top: 3.0rem;
+      right: 2.0rem;
+      background-color: black;
+      margin-bottom: 0;
+      opacity: 0.5;
+
+      pre {
+        visibility: hidden;
+      }
+    }
+
+    li {
+      cursor: pointer;
+    }
+
+    li::after {
+      display: none;
+    }
+
+    .instructions {
+      padding: 1.0rem;
+    }
+
+    .highlighted {
+      .instructions {
+        width: 45%;
+        border-radius: 0.5rem;
+        box-shadow: 0 2.0rem 5.0rem 0.0rem #00000080;
+      }
+
+      .code-editor {
+        opacity: 1;
+        z-index: 2;
+
+        pre {
+          visibility: visible;
+        }
+      }
+    }
+
+    li + li .code-editor {
+      top: 7.0rem;
+      right: 6.0rem;
+    }
+
+    li + li + li .code-editor {
+      top: 11.0rem;
+      right: -4.0rem;
+    }
+  }
 }
 
 .best-practices,
 .alternatives {
   .container div {
-    margin-top: 2.0rem;
     margin-bottom: 0;
+    margin-top: 2.0rem;
   }
 }
 
