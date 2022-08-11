@@ -436,10 +436,15 @@ footer {
 
   .container {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   a {
     margin: 0 0.5rem;
+  }
+
+  p + p {
+    margin-top: 1.0rem;
   }
 }
