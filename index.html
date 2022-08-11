@@ -390,7 +390,32 @@
             Where Dock is a thin wrapper around the Docker CLI, <a
             href="https://benzaita.github.io/dockerized-cli/explanations/how_dockerized_exec_works/">dockerized
             is a thin wrapper around Docker Compose</a>, which is used to
-            achieve similar functionality.
+            achieve similar functionality. The goals and <a
+            href="https://benzaita.github.io/dockerized-cli/explanations/why_use_dockerized/#why-you-should-keep-your-build-dependencies-in-a-dockerfile">benefits</a>
+            of the two tools are largely the same, they mostly differ in terms
+            of implementation.
+          </p>
+
+          <p>
+            The use of Docker Compose by dockerized allows orchestration of
+            multiple services using the standard compose file. dockerized also
+            has <a
+            href="https://benzaita.github.io/dockerized-cli/how_to_guides/use_with_vscode_remote_containers/">support
+            for VSCode Remote Containers</a> by default.
+          </p>
+
+          <p>
+            Dock provides a number of convenience features that aren't available
+            in Docker Compose at present, including mounting the local user and
+            group (so that commands aren't run as <code>root</code>), simplified
+            mounting of the host Docker engine, nested bind mounts, and cache
+            volumes. Dock also provides a <a
+            href="https://github.com/eZanmoto/dock#dock-rebuild"><code>dock
+            rebuild</code></a> subcommand, that can be used to keep your images
+            up-to-date even when you're not using the <code>dock run-in</code>
+            and <code>dock shell</code> subcommands, which can pair conveniently
+            with the use of Docker Compose (and dockerized itself, for that
+            matter).
           </p>
         </div>
       </div>
