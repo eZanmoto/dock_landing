@@ -100,11 +100,11 @@
               </div>
               <pre>
 <span class="prompt"><span class="dollar">$</span></span> dock init rust
-    Skipped './Cargo.toml'
+<span class="stdout">    Skipped './Cargo.toml'
     Skipped './src'
     Skipped './src/main.rs'
     Created './build.Dockerfile'
-    Created './dock.yaml'
+    Created './dock.yaml'</span>
 
 
               </pre>
@@ -126,14 +126,14 @@
               </div>
               <pre>
 <span class="prompt"><span class="dollar">$</span></span> dock shell -D
-    [$] docker build ...
+<span class="stdout">    [$] docker build ...
     [&gt;] Sending build context to Docker daemon
     [&gt;] ...
     [&gt;] Successfully tagged org/proj.build:latest
     ...
-    [$] docker run ...
+    [$] docker run ...</span>
 <span class="dock-prompt">[&gt;] I have no name!<span class="at">@</span>host<span class="dollar">$</span></span> ls
-    [&gt;] build.Dockerfile Cargo.toml dock.yaml src</pre>
+<span class="stdout">    [&gt;] build.Dockerfile Cargo.toml dock.yaml src</span></pre>
             </div>
           </li>
 
@@ -152,13 +152,13 @@
               </div>
               <pre>
 <span class="prompt"><span class="dollar">$</span></span> cargo run
-  <span class="failure">✗</span> The program 'cargo' is currently not installed.
+  <span class="failure">✗</span> <span class="stdout">The program 'cargo' is currently not installed.</span>
 <span class="prompt"><span class="dollar">$</span></span> dock
 <span class="dock-prompt">I have no name!<span class="at">@</span>host<span class="dollar">$</span></span> cargo run
-       Compiling proj v0.0.1 (/app)
+<span class="stdout">       Compiling proj v0.0.1 (/app)
         Finished dev [unoptimized + debuginfo] target(s)
          Running `target/debug/proj`
-    hello, world!
+    hello, world!</span>
               </pre>
             </div>
           </li>
@@ -187,13 +187,13 @@
               <pre>
 <span class="prompt"><span class="dollar">$</span></span> export DOCK_DEFAULT_TEMPLATES_SOURCE='git:https://github.com/ezanmoto/dock_init_templates.git:0.1:./templates'
 <span class="prompt"><span class="dollar">$</span></span> cargo install --git https://github.com/ezanmoto/dock
-    ...
+<span class="stdout">    ...
        Compiling dock v0.35.5
         Finished release [optimized] target(s)
       Installing /cargo/bin/dock
-       Installed package `dock v0.35.5
+       Installed package `dock v0.35.5`</span>
 <span class="prompt"><span class="dollar">$</span></span> /cargo/bin/dock --version
-    dock 0.35.5</pre>
+<span class="stdout">    dock 0.35.5</span></pre>
             </div>
           </li>
 
