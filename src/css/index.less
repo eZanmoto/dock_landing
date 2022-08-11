@@ -271,14 +271,25 @@ li {
   }
 }
 
-.installation {
+.installation,
+.features,
+.benefits,
+.best-practices,
+.alternatives {
   h2 img {
-    // TODO Remove the indentation on the header caused by `width: 60%`.
     width: 60%;
     min-width: 20.0rem;
-    max-height: 6.0rem;
+    max-height: 5.0rem;
   }
 
+  @media @phone {
+    h2 img {
+      width: inherit;
+    }
+  }
+}
+
+.installation {
   .instructions {
     margin-bottom: 2.0rem;
   }
