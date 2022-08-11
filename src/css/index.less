@@ -113,7 +113,7 @@ section + section {
   padding-bottom: 11.0rem;
 }
 
-section + section::after {
+section + section + section::after {
   display: block;
   position: absolute;
   bottom: 0;
@@ -127,6 +127,10 @@ section + section::after {
 
 section + section .code-editor {
   margin-bottom: 5.0rem;
+}
+
+.installation {
+  padding-top: 0;
 }
 
 ol h3 {
@@ -209,7 +213,6 @@ li {
 
     .container {
       position: relative;
-      margin-bottom: 8.0rem;
       margin-top: 8.0rem;
       padding: 5.0rem;
     }
@@ -264,6 +267,70 @@ li {
     li + li + li .code-editor {
       top: 11.0rem;
       right: -4.0rem;
+    }
+  }
+}
+
+.installation {
+  h2 img {
+    // TODO Remove the indentation on the header caused by `width: 60%`.
+    width: 60%;
+    min-width: 20.0rem;
+    max-height: 6.0rem;
+  }
+
+  .instructions {
+    margin-bottom: 2.0rem;
+  }
+
+  .env-var {
+    font-size: 1.3rem;
+  }
+
+  h3 {
+    display: inline-block;
+  }
+
+  h3::after {
+    display: block;
+    background-color: #64d5d6;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 0.5rem;
+    content: "";
+  }
+
+  @media @tablet {
+    li {
+      position: relative;
+      // TODO This is a hack to ensure that the code editor doesn't overflow the
+      // `li`, but should be replaced with a more robust solution when time
+      // allows.
+      height: 30.0rem;
+    }
+
+    .instructions {
+      width: 40%;
+    }
+
+    .code-editor {
+      position: absolute;
+      top: 0;
+      // This lines the right edge of the editor to the right edge of the
+      // window. `(100vw - 80vw) / 2` is the distance of the right edge of the
+      // editor from the window (where `80vw` is the width of the container,
+      // defined by Skeleton; ideally this would be stored in a variable), so we
+      // substract this from the right edge.
+      right: -10vw;
+      width: calc(55% + 10vw);
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  @media @desktop {
+    .env-var {
+      font-size: 1.5rem;
     }
   }
 }
