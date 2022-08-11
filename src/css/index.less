@@ -335,13 +335,51 @@ li {
   }
 }
 
-.features {
+.features,
+.benefits {
   a {
     color: var(--primary-text-colour);
   }
 
   a:hover {
     color: var(--light-text-colour);
+  }
+
+  p code {
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 0.1rem 0.3rem;
+  }
+
+  li {
+    background-image: url("/src/img/hexagon_light.svg");
+    background-size: 4.0rem;
+    background-position: 0.7rem 0;
+    background-repeat: no-repeat;
+
+    float: left;
+    box-sizing: border-box;
+
+    h3 {
+      padding-top: 0.4rem;
+    }
+
+    a h3 {
+      padding-top: 0.3rem;
+    }
+  }
+
+  @media @phablet {
+    li {
+      width: 48%;
+      margin-left: 4%;
+      overflow: hidden;
+    }
+
+    li:nth-child(odd) {
+      clear: both;
+      margin-left: 0;
+    }
   }
 }
 
