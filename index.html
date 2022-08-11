@@ -424,10 +424,15 @@
             Where Dock is a thin wrapper around the Docker CLI, <a
             href="https://benzaita.github.io/dockerized-cli/explanations/how_dockerized_exec_works/">dockerized
             is a thin wrapper around Docker Compose</a>, which is used to
-            achieve similar functionality. The goals and <a
-            href="https://benzaita.github.io/dockerized-cli/explanations/why_use_dockerized/#why-you-should-keep-your-build-dependencies-in-a-dockerfile">benefits</a>
-            of the two tools are largely the same, they mostly differ in terms
-            of implementation.
+            achieve similar functionality. The goals and benefits of the two
+            tools are largely the same, they mostly differ in terms of
+            implementation. The dockerized documentation in particular provides
+            a great outline of <a
+            href="https://benzaita.github.io/dockerized-cli/explanations/why_use_dockerized/#why-you-should-keep-your-build-dependencies-in-a-dockerfile">why
+            you should keep your build dependencies in a Dockerfile</a>, as well
+            as a <a
+            href="https://benzaita.github.io/dockerized-cli/explanations/why_use_dockerized/#what-ive-seen-people-usually-do-and-have-done-by-myself">list
+            of manual alternatives and their downsides</a>.
           </p>
 
           <p>
@@ -435,7 +440,11 @@
             multiple services using the standard compose file. dockerized also
             has <a
             href="https://benzaita.github.io/dockerized-cli/how_to_guides/use_with_vscode_remote_containers/">support
-            for VSCode Remote Containers</a> by default.
+            for VSCode Remote Containers</a> by default, and has a number of
+            "starter kits" for popular languages, and VSCode. dockerized also
+            provides a mechanism for pushing and pulling the build environment
+            itself, to speed up the creation of build environments that involve
+            steps with a large latency.
           </p>
 
           <p>
@@ -443,7 +452,8 @@
             in Docker Compose at present, including mounting the local user and
             group (so that commands aren't run as <code>root</code>), simplified
             mounting of the host Docker engine, nested bind mounts, and cache
-            volumes. Dock also provides a <a
+            volumes (which are slightly different to the standard volumes that
+            Docker provides). Dock also provides a <a
             href="https://github.com/eZanmoto/dock#dock-rebuild"><code>dock
             rebuild</code></a> subcommand, that can be used to keep your images
             up-to-date even when you're not using the <code>dock run-in</code>
