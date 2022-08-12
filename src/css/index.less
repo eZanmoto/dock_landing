@@ -308,28 +308,55 @@ li {
 
   h3 {
     display: inline-block;
+    position: absolute;
+    cursor: pointer;
+    z-index: 1;
   }
 
   h3::after {
     display: block;
-    background-color: #64d5d6;
     border-radius: 0.5rem;
     width: 100%;
     height: 0.5rem;
     content: "";
   }
 
+  .instructions p,
+  .code-editor {
+    visibility: hidden;
+  }
+
+  .highlighted {
+    h3::after {
+      background-color: #64d5d6;
+    }
+
+    .instructions p,
+    .code-editor {
+      visibility: visible;
+    }
+  }
+
   @media @tablet {
-    li {
+    ul {
       position: relative;
       // TODO This is a hack to ensure that the code editor doesn't overflow the
-      // `li`, but should be replaced with a more robust solution when time
+      // `ul`, but should be replaced with a more robust solution when time
       // allows.
-      height: 30.0rem;
+      height: 40.0rem;
+    }
+
+    li + li h3 {
+      left: 10.0rem;
     }
 
     .instructions {
+      position: absolute;
       width: 40%;
+    }
+
+    p {
+      margin-top: 4.5rem;
     }
 
     .code-editor {
