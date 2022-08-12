@@ -14,4 +14,10 @@
   --primary-colour: #00c6c9;
   --primary-text-colour: #222222;
   --light-text-colour: #666666;
+  --skeleton-container-width: 80vw;
+  --skeleton-container-max-width: 960px;
+  --skeleton-container-effective-width:
+    min(var(--skeleton-container-width), var(--skeleton-container-max-width));
+  --container-margin-width:
+    calc((100vw - var(--skeleton-container-effective-width)) / 2);
 }

@@ -366,13 +366,8 @@ li {
     .code-editor {
       position: absolute;
       top: 0;
-      // This lines the right edge of the editor to the right edge of the
-      // window. `(100vw - 80vw) / 2` is the distance of the right edge of the
-      // editor from the window (where `80vw` is the width of the container,
-      // defined by Skeleton; ideally this would be stored in a variable), so we
-      // substract this from the right edge.
-      right: -10vw;
-      width: calc(55% + 10vw);
+      right: calc(var(--container-margin-width) * -1);
+      width: calc(55% + var(--container-margin-width));
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
