@@ -2,8 +2,8 @@
 # Use of this source code is governed by an MIT
 # licence that can be found in the LICENCE file.
 
-# `$0 <version> <target> <dir>` attempts to install the given `<version>` and
-# `<target>` version of the Dock binary to `<dir>`.
+# `$0 [--to <dir>] <version> <target>` attempts to install the given `<version>`
+# and `<target>` version of the Dock binary to `<dir>`.
 
 set -o errexit
 
@@ -23,14 +23,32 @@ main() {
             trap
         '
 
-    if [ $# -ne 3 ] ; then
-        usage "$prog"
+    local default_dir='/usr/local/bin'
+
+    if [ $# -lt 2 ] ; then
+        usage \
+            "$0" \
+            "$default_dir"
     fi
+
+    local dir="$default_dir"
+    while [ $# -gt 2 ] ; do
+        case "$1" in
+            --to)
+                dir="$2"
+                ;;
+            *)
+                usage \
+                    "$0" \
+                    "$default_dir"
+                ;;
+        esac
+        shift 2
+    done
 
     local prog="$0"
     local version="$1"
     local target="$2"
-    local dir="$3"
 
     local tarball_name="${PROJ}-${version}-${target}.tar.gz"
 
@@ -86,12 +104,16 @@ project](https://github.com/ezanmoto/dock/issues).
 }
 
 usage() {
-    local prog="$0"
+    local prog="$1"
+    local default_dir="$2"
 
     cat \
         >&2 \
         <<EOF
-usage: $prog <version> <target> <dir>
+usage: $prog [--to <dir>] <version> <target>
+
+Options:
+    --to <dir>          the directory to install to (default: '$default_dir')
 EOF
     exit 1
 }
