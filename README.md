@@ -30,3 +30,16 @@ The project can be run locally using `npm run build`. This can also be run under
 
 Running the build in any of the above ways will generate the built artefacts to
 the local `dist` directory.
+
+### Testing
+
+The project can be tested locally using `npm test`.This can also be run under
+`dock shell`, or by running the following:
+
+    dock run-in build-env: npm test
+
+A subset of integration tests can be run by passing name patterns to `npm test`:
+
+    npm test dir
+
+The commands above will run all integration tests whose name contains "dir".
