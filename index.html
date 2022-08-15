@@ -181,7 +181,38 @@
 
           <li class="highlighted">
             <div class="instructions">
-              <h3>Binaries</h3>
+              <h3><span class="expanded">Convenience</span> Script</h3>
+              <p>
+                The convenience script <a
+                href="install.sh"><code>install.sh</code></a> can be used to
+                install pre-built Dock binaries based on your detected
+                environment. <code>dock</code> can be installed globally by
+                running <code>sudo sh install.sh</code>.
+              </p>
+            </div>
+            <div class="code-editor">
+              <div class="control-bar">
+                <span class="control-button red"></span>
+                <span class="control-button yellow"></span>
+                <span class="control-button green"></span>
+              </div>
+              <pre>
+<span class="prompt"><span class="dollar">$</span></span> mkdir "$HOME/bin"
+<span class="prompt"><span class="dollar">$</span></span> wget install.sh
+<span class="prompt"><span class="dollar">$</span></span> sh install.sh --to "$HOME/bin"
+<span class="prompt"><span class="dollar">$</span></span> ~/bin/dock --version
+<span class="stdout">    dock 0.35.5</span>
+
+
+
+
+              </pre>
+            </div>
+          </li>
+
+          <li>
+            <div class="instructions">
+              <h3><span class="expanded">Pre-built</span> Binaries</h3>
               <p>
                 Pre-built binaries are <a
                 href="https://github.com/ezanmoto/dock/releases">available on
@@ -212,7 +243,7 @@
 
           <li>
             <div class="instructions">
-              <h3>With Rust</h3>
+              <h3><span class="expanded">Using</span> Rust</h3>
               <p>
                 <code>cargo</code> can be used to build and install the latest
                 version of the project. Note that this requires setting the
