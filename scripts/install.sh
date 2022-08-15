@@ -2,8 +2,8 @@
 # Use of this source code is governed by an MIT
 # licence that can be found in the LICENCE file.
 
-# `$0 [--to <dir>] <version> <target>` attempts to install the given `<version>`
-# and `<target>` version of the Dock binary to `<dir>`.
+# `$0 [--to <dir>] [--version <version>] <target>` attempts to install the given
+# `<version>` and `<target>` version of the Dock binary to `<dir>`.
 
 set -o errexit
 
@@ -23,31 +23,37 @@ main() {
         '
 
     local default_dir='/usr/local/bin'
+    local default_vsn="$(latest_version "$REPO")"
 
-    if [ $# -lt 2 ] ; then
+    if [ $# -lt 1 ] ; then
         usage \
             "$0" \
-            "$default_dir"
+            "$default_dir" \
+            "$default_vsn"
     fi
 
     local dir="$default_dir"
-    while [ $# -gt 2 ] ; do
+    local version="$default_vsn"
+    while [ $# -gt 1 ] ; do
         case "$1" in
             --to)
                 dir="$2"
                 ;;
+            --version)
+                version="$2"
+                ;;
             *)
                 usage \
                     "$0" \
-                    "$default_dir"
+                    "$default_dir" \
+                    "$default_vsn"
                 ;;
         esac
         shift 2
     done
 
     local prog="$0"
-    local version="$1"
-    local target="$2"
+    local target="$1"
 
     local tarball_name="${PROJ}-${version}-${target}.tar.gz"
 
@@ -79,10 +85,7 @@ project](https://github.com/ezanmoto/dock/issues).
 
     tarball_url=$(
         echo "$tarball_url_line" \
-            | grep browser_download_url \
-            | cut \
-                --delimiter='"' \
-                --fields=4
+            | extract_json_string browser_download_url
     )
 
     local tmpd="$(mktemp --directory)"
@@ -108,14 +111,16 @@ project](https://github.com/ezanmoto/dock/issues).
 usage() {
     local prog="$1"
     local default_dir="$2"
+    local default_vsn="$3"
 
     cat \
         >&2 \
         <<EOF
-usage: $prog [--to <dir>] <version> <target>
+usage: $prog [--to <dir>] [--version <version>] <target>
 
 Options:
     --to <dir>          the directory to install to (default: '$default_dir')
+    --version <version> the version to install (default: '$default_vsn')
 EOF
     exit 1
 }
@@ -140,6 +145,25 @@ command_exists() {
 die() {
     echo "$@" >&2
     exit 1
+}
+
+extract_json_string() {
+    local field="$1"
+
+    grep "\"$field\": " \
+        | cut \
+            --delimiter='"' \
+            --fields=4
+}
+
+latest_version() {
+    local repo="$1"
+
+    curl \
+            --fail \
+            --silent \
+            "https://api.github.com/repos/$repo/releases/latest" \
+        | extract_json_string tag_name
 }
 
 main "$@"

@@ -106,7 +106,6 @@ setup() {
 @test "install command to <dir>" {
     run /bin/sh "$INSTALL_SH" \
         --to "$DIR" \
-        "$VERSION" \
         "$TARGET"
 
     # (A)
@@ -175,16 +174,16 @@ assert_partial_output() {
 }
 
 # Given (1) an empty test directory `<dir>`
-#     AND (2) the install script is run
+#     AND (2) the install script is run with `<version>`
 # When `<dir>/<proj> --version` is run
 # Then (A) the command is successful
-#     AND (B) the output indicates that a required command couldn't be found
+#     AND (B) the output contains `<proj> <version>`
 @test "command is installed correctly" {
     # (1)
     # (2)
     /bin/sh "$INSTALL_SH" \
         --to "$DIR" \
-        "$VERSION" \
+        --version "$VERSION" \
         "$TARGET" \
 
     run "$DIR/$PROJ" --version
@@ -201,7 +200,7 @@ assert_partial_output() {
 @test "invalid version" {
     run /bin/sh "$INSTALL_SH" \
         --to "$DIR" \
-        'bad_version' \
+        --version 'bad_version' \
         "$TARGET"
 
     # (A)
@@ -216,7 +215,6 @@ assert_partial_output() {
 @test "invalid target" {
     run /bin/sh "$INSTALL_SH" \
         --to "$DIR" \
-        "$VERSION" \
         'bad_target'
 
     # (A)
@@ -231,7 +229,6 @@ assert_partial_output() {
 @test "invalid dir" {
     run /bin/sh "$INSTALL_SH" \
         --to "$DIR/nonexistent" \
-        "$VERSION" \
         "$TARGET"
 
     # (A)
@@ -251,7 +248,6 @@ assert_partial_output() {
 
     run /bin/sh "$INSTALL_SH" \
         --to "$dir" \
-        "$VERSION" \
         "$TARGET"
 
     # (A)
@@ -264,6 +260,7 @@ assert_partial_output() {
 # Then (A) the command is unsuccessful
 #     AND (B) the output indicates the usage
 #     AND (C) the output contains the default directory
+#     AND (D) the output contains the default version
 @test "no args" {
     run /bin/sh "$INSTALL_SH"
 
@@ -273,4 +270,6 @@ assert_partial_output() {
     assert_partial_output '^usage: '
     # (C)
     assert_partial_output "(default: '/usr/local/bin')"
+    # (D)
+    assert_partial_output "(default: '[0-9]\+\.[0-9]\+\.[0-9]\+')"
 }
