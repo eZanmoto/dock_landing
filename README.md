@@ -14,7 +14,8 @@ Development
 The build environment for the project is defined in `build.Dockerfile`. The
 build environment can be replicated locally by following the setup defined in
 the Dockerfile, or Dock can be used to mount the local directory in the build
-environment by running `dock shell`.
+environment by running `dock shell`. The dependencies for the project can be
+installed using `npm install`.
 
 ### Running
 
