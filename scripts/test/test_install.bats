@@ -7,8 +7,13 @@
 setup_file() {
     bats_require_minimum_version 1.5.0
 
-    if [ -z "$SCRIPTS_DIR" ] ; then
-        echo "'\$SCRIPTS_DIR' isn't set" >&2
+    if [ -z "$INSTALL_SH" ] ; then
+        echo "'\$INSTALL_SH' isn't set" >&2
+        exit 1
+    fi
+
+    if [ -z "$CACHING_SH" ] ; then
+        echo "'\$CACHING_SH' isn't set" >&2
         exit 1
     fi
 
@@ -33,7 +38,7 @@ setup_file() {
         "$curl_cache_dir"
 
     gen_caching_curl_bin \
-        "$SCRIPTS_DIR/caching.sh" \
+        "$CACHING_SH" \
         "$curl_cache_dir" \
         "$CACHING_BIN_DIR/curl"
 }
@@ -73,7 +78,6 @@ setup() {
     mkdir "$target_test_dir"
 
     local test_dir="$(dirname "$BATS_TEST_FILENAME")"
-    INSTALL_SH="$SCRIPTS_DIR/install.sh"
 
     PROJ='dock'
     VERSION='0.35.5'

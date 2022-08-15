@@ -46,17 +46,19 @@ mkdir \
     --parents \
     "$tgt_scratch_dir"
 
-if [ -z "$bats_filter" ] ; then
+run_tests() {
     DISABLE_CURL_CACHING="$disable_curl_caching" \
-        SCRIPTS_DIR="$proj_dir/scripts" \
         TEST_GEN_DIR="$tgt_gen_dir" \
         TEST_SCRATCH_DIR="$tgt_scratch_dir" \
-            npx bats 'scripts/test'
-else
-    DISABLE_CURL_CACHING="$disable_curl_caching" \
-        SCRIPTS_DIR="$proj_dir/scripts" \
-        TEST_GEN_DIR="$tgt_gen_dir" \
-        TEST_SCRATCH_DIR="$tgt_scratch_dir" \
+        INSTALL_SH="$proj_dir/public/install.sh" \
+        CACHING_SH="$proj_dir/scripts/caching.sh" \
             npx bats 'scripts/test' \
-                --filter "$bats_filter"
+                "$@"
+}
+
+if [ -z "$bats_filter" ] ; then
+    run_tests
+else
+    run_tests \
+        --filter "$bats_filter"
 fi
