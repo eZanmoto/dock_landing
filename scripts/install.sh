@@ -18,7 +18,6 @@ main() {
             grep
             install
             mktemp
-            sed
             tar
             trap
         '
@@ -80,7 +79,10 @@ project](https://github.com/ezanmoto/dock/issues).
 
     tarball_url=$(
         echo "$tarball_url_line" \
-            | sed 's/.*"browser_download_url": "\([^"]*\)".*/\1/'
+            | grep browser_download_url \
+            | cut \
+                --delimiter='"' \
+                --fields=4
     )
 
     local tmpd="$(mktemp --directory)"
