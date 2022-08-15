@@ -272,3 +272,25 @@ assert_partial_output() {
     # (E)
     assert_partial_output "(default: '[0-9]\+\.[0-9]\+\.[0-9]\+')"
 }
+
+# When the install script is run with `--help`
+# Then (A) the command is successful
+#     AND (B) the output indicates the usage
+#     AND (C) the output contains the default directory
+#     AND (D) the output contains the default target
+#     AND (E) the output contains the default version
+@test "help flag" {
+    run /bin/sh "$INSTALL_SH" \
+        --help
+
+    # (A)
+    assert_status 0
+    # (B)
+    assert_partial_output '^usage: '
+    # (C)
+    assert_partial_output "(default: '/usr/local/bin')"
+    # (D)
+    assert_partial_output "(default: 'x86_64-unknown-linux-musl')"
+    # (E)
+    assert_partial_output "(default: '[0-9]\+\.[0-9]\+\.[0-9]\+')"
+}

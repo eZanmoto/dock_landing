@@ -2,7 +2,7 @@
 # Use of this source code is governed by an MIT
 # licence that can be found in the LICENCE file.
 
-# `$0 [--to <dir>] [--target <target>] [--version <version>]` attempts
+# `$0 [--help] [--to <dir>] [--target <target>] [--version <version>]` attempts
 # to install the given `<version>` and `<target>` version of the Dock binary to
 # `<dir>`.
 
@@ -27,11 +27,16 @@ main() {
     local default_tgt="$(default_target || true)"
     local default_vsn="$(latest_version "$REPO")"
 
+    local help=
     local dir="$default_dir"
     local version="$default_vsn"
     local target="$default_tgt"
     while [ $# -gt 0 ] ; do
         case "$1" in
+            --help)
+                help=1
+                break
+                ;;
             --to)
                 dir="$2"
                 ;;
@@ -55,12 +60,18 @@ Please use \`--target\` to provide an explicit target.
 "
     fi
 
-    if [ $# -gt 0 ] ; then
+    if [ ! -z "$help" -o $# -gt 0 ] ; then
         usage \
             "$0" \
             "$default_dir" \
             "$default_tgt" \
             "$default_vsn"
+
+        local exit_code=0
+        if [ -z "$help" ] ; then
+            exit_code=1
+        fi
+        exit "$exit_code"
     fi
     local prog="$0"
 
@@ -123,14 +134,14 @@ usage() {
     local default_tgt="$3"
     local default_vsn="$4"
 
-    die "usage: $prog [--to <dir>] [--target <target>] [--version <version>]
+    echo "usage: $prog [--help] [--to <dir>] [--target <target>] [--version <version>]
 
 Options:
+    --help              output help information
     --target <target>   the binary format to install (default: '$default_tgt')
     --to <dir>          the directory to install to (default: '$default_dir')
     --version <version> the version to install (default: '$default_vsn')
-"
-    exit 1
+" >&2
 }
 
 assert_commands_exist() {
