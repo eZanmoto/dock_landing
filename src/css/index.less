@@ -320,12 +320,20 @@ li {
     }
 
     li + li h3 {
-      left: 10.0rem;
+      left: 7.0rem;
+    }
+
+    li + li + li h3 {
+      left: 16.0rem;
     }
 
     .instructions {
       position: absolute;
       width: 40%;
+    }
+
+    .expanded {
+      display: none;
     }
 
     p {
@@ -374,6 +382,14 @@ li {
   }
 
   @media @desktop {
+    li + li h3 {
+      left: 10.0rem;
+    }
+
+    li + li + li h3 {
+      left: 22.0rem;
+    }
+
     .env-var {
       font-size: 1.5rem;
     }
