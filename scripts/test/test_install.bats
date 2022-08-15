@@ -105,8 +105,7 @@ setup() {
 #     AND (B) the output is empty
 @test "install command to <dir>" {
     run /bin/sh "$INSTALL_SH" \
-        --to "$DIR" \
-        "$TARGET"
+        --to "$DIR"
 
     # (A)
     assert_status 0
@@ -183,8 +182,7 @@ assert_partial_output() {
     # (2)
     /bin/sh "$INSTALL_SH" \
         --to "$DIR" \
-        --version "$VERSION" \
-        "$TARGET" \
+        --version "$VERSION"
 
     run "$DIR/$PROJ" --version
 
@@ -200,8 +198,7 @@ assert_partial_output() {
 @test "invalid version" {
     run /bin/sh "$INSTALL_SH" \
         --to "$DIR" \
-        --version 'bad_version' \
-        "$TARGET"
+        --version 'bad_version'
 
     # (A)
     assert_status 1
@@ -215,7 +212,7 @@ assert_partial_output() {
 @test "invalid target" {
     run /bin/sh "$INSTALL_SH" \
         --to "$DIR" \
-        'bad_target'
+        --target 'bad_target'
 
     # (A)
     assert_status 1
@@ -228,8 +225,7 @@ assert_partial_output() {
 #     AND (B) the output indicates that the directory doesn't exist
 @test "invalid dir" {
     run /bin/sh "$INSTALL_SH" \
-        --to "$DIR/nonexistent" \
-        "$TARGET"
+        --to "$DIR/nonexistent"
 
     # (A)
     assert_status 1
@@ -247,8 +243,7 @@ assert_partial_output() {
     touch "$dir"
 
     run /bin/sh "$INSTALL_SH" \
-        --to "$dir" \
-        "$TARGET"
+        --to "$dir"
 
     # (A)
     assert_status 1
@@ -256,13 +251,15 @@ assert_partial_output() {
     assert_partial_output 'install: .*: Not a directory'
 }
 
-# When the install script is run with no arguments
+# When the install script is run with an argument without a flag
 # Then (A) the command is unsuccessful
 #     AND (B) the output indicates the usage
 #     AND (C) the output contains the default directory
-#     AND (D) the output contains the default version
-@test "no args" {
-    run /bin/sh "$INSTALL_SH"
+#     AND (D) the output contains the default target
+#     AND (E) the output contains the default version
+@test "argument without flag" {
+    run /bin/sh "$INSTALL_SH" \
+        no_flag
 
     # (A)
     assert_status 1
@@ -271,5 +268,7 @@ assert_partial_output() {
     # (C)
     assert_partial_output "(default: '/usr/local/bin')"
     # (D)
+    assert_partial_output "(default: 'x86_64-unknown-linux-musl')"
+    # (E)
     assert_partial_output "(default: '[0-9]\+\.[0-9]\+\.[0-9]\+')"
 }

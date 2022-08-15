@@ -2,8 +2,9 @@
 # Use of this source code is governed by an MIT
 # licence that can be found in the LICENCE file.
 
-# `$0 [--to <dir>] [--version <version>] <target>` attempts to install the given
-# `<version>` and `<target>` version of the Dock binary to `<dir>`.
+# `$0 [--to <dir>] [--target <target>] [--version <version>]` attempts
+# to install the given `<version>` and `<target>` version of the Dock binary to
+# `<dir>`.
 
 set -o errexit
 
@@ -23,37 +24,45 @@ main() {
         '
 
     local default_dir='/usr/local/bin'
+    local default_tgt="$(default_target || true)"
     local default_vsn="$(latest_version "$REPO")"
-
-    if [ $# -lt 1 ] ; then
-        usage \
-            "$0" \
-            "$default_dir" \
-            "$default_vsn"
-    fi
 
     local dir="$default_dir"
     local version="$default_vsn"
-    while [ $# -gt 1 ] ; do
+    local target="$default_tgt"
+    while [ $# -gt 0 ] ; do
         case "$1" in
             --to)
                 dir="$2"
+                ;;
+            --target)
+                target="$2"
                 ;;
             --version)
                 version="$2"
                 ;;
             *)
-                usage \
-                    "$0" \
-                    "$default_dir" \
-                    "$default_vsn"
+                break
                 ;;
         esac
         shift 2
     done
 
+    if [ -z "$target" ] ; then
+        die "A default target couldn't be calculated for your environment.
+
+Please use \`--target\` to provide an explicit target.
+"
+    fi
+
+    if [ $# -gt 0 ] ; then
+        usage \
+            "$0" \
+            "$default_dir" \
+            "$default_tgt" \
+            "$default_vsn"
+    fi
     local prog="$0"
-    local target="$1"
 
     local tarball_name="${PROJ}-${version}-${target}.tar.gz"
 
@@ -111,17 +120,16 @@ project](https://github.com/ezanmoto/dock/issues).
 usage() {
     local prog="$1"
     local default_dir="$2"
-    local default_vsn="$3"
+    local default_tgt="$3"
+    local default_vsn="$4"
 
-    cat \
-        >&2 \
-        <<EOF
-usage: $prog [--to <dir>] [--version <version>] <target>
+    die "usage: $prog [--to <dir>] [--target <target>] [--version <version>]
 
 Options:
+    --target <target>   the binary format to install (default: '$default_tgt')
     --to <dir>          the directory to install to (default: '$default_dir')
     --version <version> the version to install (default: '$default_vsn')
-EOF
+"
     exit 1
 }
 
@@ -154,6 +162,19 @@ extract_json_string() {
         | cut \
             --delimiter='"' \
             --fields=4
+}
+
+default_target() {
+    local machine="$(uname --machine)"
+    if [ "$machine" != 'x86_64' ] ; then
+        exit 1
+    fi
+
+    if [ "$(uname --kernel-name)" != 'Linux' ] ; then
+        exit 1
+    fi
+
+    echo "${machine}-unknown-linux-musl"
 }
 
 latest_version() {
