@@ -21,6 +21,7 @@ main() {
             mktemp
             tar
             trap
+            uname
         '
 
     local default_dir='/usr/local/bin'
